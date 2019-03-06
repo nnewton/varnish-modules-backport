@@ -1,5 +1,5 @@
 %global varnishver 4.1.11
-%global modulesver 0.13.0
+%global modulesver 0.15.0
 # To get vabi and vabistrict, run rpm -qip --provides <varnish-rpm-package>
 # For the varnish version you are building against.
 %global vabi 3.2
@@ -22,6 +22,8 @@ Requires: varnishabi-%vabi
 Requires: varnishabi-strict-%vabistrict
 Buildrequires: varnish = %varnishver
 Buildrequires: varnish-devel = %varnishver
+Buildrequires: python-docutils 
+
 
 %description
 Collection of Varnish modules to add functionality to Varnish cache server.
@@ -32,7 +34,6 @@ vmod-tcp, vmod-var, vmod-vsthrottle, and vmod-xkey.
 %setup -q -n %{name}-%{modulesver}
 
 %build
-export RST2MAN=/bin/true
 %configure \
   --docdir=%{?_pkgdocdir}%{!?_pkgdocdir:%{_docdir}/%{name}-%{version}}
 # We have to remove rpath - not allowed in Fedora
@@ -70,6 +71,11 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Wed Mar 6 2019 Narayan Newton <nnewton@tag1consulting.com> - 4.1.11_0.15.0-1
+- Update modules to 0.15.0
+- Build for Varnish 4.1.11
+- Remove RST2MAN fake variable, add python-buildutils for actual rst2man
+
 * Sun Apr 15 2018 Jeff Sheltren <jeff@tag1consulting.com> - 4.1.9_0.13.0-1
 - Update modules to 0.13.0
 - Build for Varnish 4.1.9
