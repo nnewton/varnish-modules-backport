@@ -9,7 +9,7 @@ jobs:
 
       - run:
           name: Install and configure mock 
-          command: yum -y install epel-release && yum -y mock && cp varnish-modules-backport/config/mock/epel-7-x86_64_varnish /etc/mock/. 
+          command: yum -y install epel-release && yum -y install mock && cp varnish-modules-backport/config/mock/epel-7-x86_64_varnish /etc/mock/. 
 
       - run:
           name: Print the Current Working Dir 
