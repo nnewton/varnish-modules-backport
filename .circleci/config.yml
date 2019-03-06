@@ -9,8 +9,8 @@ jobs:
 
       - run:
           name: Install and configure mock 
-          command: yum -y install epel-release && yum -y install mock
+          command: yum -y install epel-release && yum -y install mock rpm-build && cp ./config/mock/epel-7-x86_64_varnish.cfg /etc/mock
 
       - run:
           name: Print the Current Working Dir 
-          command: find .
+          command: find . && find /root
