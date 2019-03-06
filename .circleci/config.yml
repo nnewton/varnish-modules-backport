@@ -12,5 +12,5 @@ jobs:
           command: yum -y install epel-release && yum -y install mock rpm-build && cp ./config/mock/epel-7-x86_64_varnish.cfg /etc/mock
 
       - run:
-          name: Print the Current Working Dir 
-          command: find . && find /root
+          name: Mock Build
+          command: mock -r epel-7-x86_64_varnish srpm/*.rpm
