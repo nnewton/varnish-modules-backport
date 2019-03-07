@@ -13,7 +13,7 @@ jobs:
 
       - run:
           name: Mock Build
-          command: mock -v -r epel-7-x86_64_varnish srpm/*.rpm
+          command: /bin/mock -r epel-7-x86_64_varnish srpm/*.rpm
 
       - store_artifacts:
           path: /var/lib/mock/epel-7-x86_64_varnish/result/build.log
