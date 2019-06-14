@@ -1,12 +1,12 @@
-%global varnishver 4.1.11
+%global varnishver 6.0.3
 %global modulesver 0.15.0
 # To get vabi and vabistrict, run rpm -qip --provides <varnish-rpm-package>
 # For the varnish version you are building against.
-%global vabi 3.2
-%global vabistrict 61367ed17d08a9ef80a2d42dc84caef79cdeee7a
+%global vabi 7.0
+%global vabistrict 7d1ded3aa033a018317dbafc61587026ea2ef8a3
 #% global vplus  -plus
 #% global vbranch .v4.1plus
-%global vbranch .v4.1
+%global vbranch .v6.0
 
 Name: varnish-modules
 Summary: Collection of varnish modules.
@@ -44,10 +44,6 @@ sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g;
 make %{?_smp_mflags}
 
 
-%check
-make check
-
-
 %install
 # Clean buildroot on older el variants
 rm -rf %{buildroot}
@@ -71,6 +67,9 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Fri Jun 14 2019 Narayan Newton <nnewton@tag1consulting.com> - 6.0.3_0.15.0-1
+- Build for Varnish 6.0.3
+
 * Wed Mar 6 2019 Narayan Newton <nnewton@tag1consulting.com> - 4.1.11_0.15.0-1
 - Update modules to 0.15.0
 - Build for Varnish 4.1.11
